@@ -1,4 +1,4 @@
-# bandcamp-sniffer (based on https://pypi.python.org/pypi/bandcamp_get)
+# bandcamp-sniffer 
 
 
 ## Installation
