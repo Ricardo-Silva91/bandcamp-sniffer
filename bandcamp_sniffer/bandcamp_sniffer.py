@@ -58,11 +58,11 @@ def get_parser():
 def get_driver(browser, display):
 
     dricve=1
-    
+
     if display==0:
         display = Display(visible=0, size=(800, 600))
         display.start()
-    
+
 
     if browser and 'chrome' in browser.lower():
         options = webdriver.ChromeOptions()
@@ -101,12 +101,12 @@ def check_if_exists(data, username):
 
 
     return exists
-    
 
-            
 
-            
-            
+
+
+
+
 
 def sniff(browser, display, data, data_file, args_file):
 
@@ -140,7 +140,7 @@ def sniff(browser, display, data, data_file, args_file):
                     #print('value over: {}'.format(int(re.search(r'\d+', id_element_green.get_attribute('textContent')).group())))
 
                     id_element_title = id_element_row.find_element_by_xpath('.//h5[@class="item-title"]')
-                    
+
                     #print('element title: {}'.format(id_element_title.get_attribute('textContent')))
 
                     id_element_black = id_element_row.find_element_by_xpath('.//span[@class="item-price"]')
@@ -150,7 +150,7 @@ def sniff(browser, display, data, data_file, args_file):
                     if (black_price - green_price == 0):
                         user = (id_element_row.get_attribute('href').split('/',5)[2]).split('.',3)[0]
                         print("it's a buy!! {}".format(user))
-                        
+
                         if not check_if_exists(data, user):
 
                             #data['id'] = user
@@ -182,24 +182,24 @@ def sniff(browser, display, data, data_file, args_file):
 
 
                 except Exception:
-                    print("cheap fucks!")
+                    print("cheap!")
 
 
-                
+
                 #id_element_green = driver.find_elements_by_xpath('//span[@class="item-price"]')[0]
                 #print('id_element_green: {}'.format(id_element_green))
-            
+
                 free_counter+=1
 
             except Exception:
                 print("reached end of feed row")
                 free_counter=0
-                break        
-        
+                break
+
         time.sleep(5)
 
         pass
-    
+
 
 
 
@@ -211,7 +211,7 @@ def command_line_runner():
     args = vars(parser.parse_args())
 
     if not args['file'] == 'None':
-    
+
 
         if args['version']:
             print(__version__)
@@ -222,7 +222,7 @@ def command_line_runner():
 
 
         try:
-            with open(args['file'], 'r') as data_file:    
+            with open(args['file'], 'r') as data_file:
                 data = json.load(data_file)
         except Exception:
             print('please insert working json file path')
